@@ -180,13 +180,109 @@ if (gallery) {
                     <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
         
                     <label for="product">Chọn sản phẩm</label>
-                    <input type="file" id="product" name="product">
+                    <input type="file" id="product" name="product" multiple>
+
         
                     <label for="message">Tin nhắn</label>
                     <textarea id="message" name="message" placeholder="Nhập tin nhắn" rows="4"></textarea>
         
                     <button type="submit">Gửi</button>
+                    <progress id="progressBar" value="0" max="100" style="width: 100%; display: none;"></progress>
+
                 </form>
+
+                <!-- Cửa sổ xác nhận -->
+<div id="confirmPopup" class="popup">
+    <div class="popup-content">
+        <p>Khi nhấn "Xác nhận", bạn đồng ý chia sẻ thông tin của mình.</p>
+        <button onclick="sendForm()">Xác nhận</button>
+        <button onclick="closeConfirmPopup()">Hủy</button>
+    </div>
+</div>
+<style>
+    .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.popup-content {
+    font-size: 16px;
+}
+
+.popup button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup button:hover {
+    background: #0056b3;
+}
+
+.popup button:last-child {
+    background: #dc3545;
+}
+
+.popup button:last-child:hover {
+    background: #c82333;
+}
+
+</style>
+                <!-- Cửa sổ Popup -->
+<div id="popupMessage" class="popup">
+    <div class="popup-content">
+        <p>Thông tin đã được gửi thành công!</p>
+        <button onclick="closePopup()">Đóng</button>
+    </div>
+    <style>
+        .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.popup-content {
+    font-size: 16px;
+}
+
+.popup button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup button:hover {
+    background: #218838;
+}
+
+    </style>
+</div>
+
             </div>
             
         </section>
