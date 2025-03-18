@@ -1,0 +1,128 @@
+/* Tổng quát */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Màu nền sáng */
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #333; /* Nền header tối */
+    color: white;
+    padding: 15px 0;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffcc00; /* Màu vàng khi hover */
+}
+
+/* Dịch vụ */
+main {
+    padding: 40px 0;
+}
+
+#services {
+    background-color: #2a5298; /* Nền màu xanh dương đậm */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#services h2 {
+    font-size: 2.5em;
+    color: #ffcc00; /* Màu vàng nổi bật */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#services article {
+    background-color: #4b6c9e; /* Nền hơi tối */
+    border: 1px solid #fff; /* Viền trắng */
+    border-radius: 8px; /* Bo góc nhẹ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 600px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#services article h3 {
+    font-size: 1.8em;
+    color: #ffcc00; /* Màu vàng nổi bật */
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+#services article p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Hiệu ứng hover bài viết */
+#services article:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: #6a88b4; /* Nền sáng hơn khi hover */
+}
+
+@media (max-width: 768px) {
+    #services h2 {
+        font-size: 2em;
+    }
+
+    #services article {
+        margin: 15px;
+        padding: 18px;
+    }
+
+    #services article h3 {
+        font-size: 1.6em;
+    }
+
+    #services article p {
+        font-size: 1em;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}

@@ -1,0 +1,128 @@
+/* Phần Mềm Kỹ Thuật */
+#software {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#software h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#software article {
+    padding-left: 20px;
+}
+
+#software p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#software ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#software ul li {
+    margin: 8px 0;
+}
+
+#software ul li a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 16px;
+}
+
+#software ul li a:hover {
+    color: #004080;
+}
+
+/* Phần Mềm Văn Phòng */
+#vanphong {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#vanphong h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#vanphong article {
+    padding-left: 20px;
+}
+
+#vanphong p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#vanphong ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#vanphong ul li {
+    margin: 8px 0;
+}
+
+#vanphong ul li a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 16px;
+}
+
+#vanphong ul li a:hover {
+    color: #004080;
+}
+
+/* Công Cụ Sử Lý Hình Ảnh Online */
+#image {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#image h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#image article {
+    padding-left: 20px;
+}
+
+#image p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#image ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#image ul li {
+    margin: 8px 0;
+}
+
+#image ul li a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 16px;
+}
+
+#image ul li a:hover {
+    color: #004080;
+}

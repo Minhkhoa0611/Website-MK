@@ -1,0 +1,402 @@
+/* Thiết lập font chữ và đặc tính cơ bản */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color: #007bff;
+    padding: 10px 20px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navbar ul li:last-child {
+    margin-right: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* Phần header */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+
+
+/* Phần container chứa sản phẩm */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Hiển thị 3 sản phẩm trên mỗi hàng và tự động căn chỉnh */
+    grid-gap: 20px; /* Khoảng cách giữa các sản phẩm */
+    padding: 2rem; /* Khoảng cách giữa lề ngoài và các sản phẩm */
+}
+
+/* Sản phẩm */
+.product {
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 250px; /* Đặt chiều rộng cố định cho sản phẩm */
+}
+
+.product img {
+    width: 200px; /* Đặt chiều rộng cố định là 200px */
+    height: 250px; /* Đặt chiều cao cố định là 250px */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.product img:hover {
+    transform: scale(1.1); /* Khi hover, phóng to ảnh lên 1.1 lần */
+}
+
+
+
+
+.product h2,
+.product p {
+    font-weight: bold; /* Làm in đậm cho tên sản phẩm, đơn giá và mã sản phẩm */
+    margin: 0.5rem 0;
+}
+
+/* Nút "Xem chi tiết" */
+.product a {
+    display: block;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Đảm bảo nút "Xem chi tiết" luôn thẳng hàng */
+}
+
+.product a:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+/* CSS cho thanh tìm kiếm */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav {
+    background-color: #333;
+    padding: 0.5rem 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+/* CSS cho ô tìm kiếm */
+#searchInput {
+    padding: 0.5rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #666;
+}
+
+
+/* Style for h2 */
+/* Style for h2 */
+h2 {
+    font-family: Arial, sans-serif; /* Font family */
+    font-size: 20px; /* Font size */
+    color: #333; /* Text color */
+    text-align: center; /* Left align text */
+    padding: 20px; /* Spacing between content and border */
+    background-color: #f8f8f8; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Rounded border */
+    max-width: 600px; /* Maximum width */
+    margin: 10px 10px 10px 0; /* Margin for spacing between elements */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effect for transform and box-shadow */
+}
+
+/* Hover effect for h2 */
+h2:hover {
+    transform: translateY(-5px); /* Move element up when hovered */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+/* Style for h4 */
+h4 {
+    font-size: 24px; /* Font size */
+    color: White; /* Text color */
+    margin-bottom: 10px; /* Bottom margin for h4 */
+    text-align: center; /* Left align text */
+}
+
+/* Style for button link */
+.button {
+    display: inline-block; /* Display as inline block */
+    padding: 10px 20px; /* Padding */
+    background-color: #007bff; /* Background color */
+    color: #fff; /* Text color */
+    text-decoration: none; /* Remove default underline */
+    border-radius: 5px; /* Rounded border */
+    transition: background-color 0.3s; /* Transition effect for background color */
+}
+
+/* Hover effect for button link */
+.button:hover {
+    background-color: #0056b3; /* Background color on hover */
+}
+
+
+.rainbow-text {
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 50px;
+    animation: rainbow 2s infinite; /* Áp dụng hiệu ứng rainbow với thời gian 2s và lặp vô hạn */
+}
+
+/* Tạo hiệu ứng rainbow */
+@keyframes rainbow {
+    0% {
+        color: #ff0000; /* Màu đỏ */
+    }
+    25% {
+        color: #ffcc00; /* Màu cam */
+    }
+    50% {
+        color: #00ff00; /* Màu xanh lá cây */
+    }
+    75% {
+        color: #0066ff; /* Màu xanh dương */
+    }
+    100% {
+        color: #ff00ff; /* Màu hồng */
+    }
+}
+
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+/* CSS cho phần tử select */
+#filterSelect {
+    margin-bottom: 10px; /* Khoảng cách dưới cùng */
+    padding: 8px; /* Khoảng cách bên trong */
+    font-size: 16px; /* Cỡ chữ */
+    border-radius: 5px; /* Bo tròn góc */
+    border: 1px solid #ccc; /* Viền */
+    background-color: #fff; /* Màu nền */
+    color: #333; /* Màu chữ */
+}
+
+#filterSelect:hover {
+    border-color: #007bff; /* Viền khi di chuột qua */
+}
+
+#filterSelect:focus {
+    outline: none; /* Loại bỏ đường viền khi focus */
+    border-color: #007bff; /* Viền khi được focus */
+}
+
+
+
+
+
+/* Style for the "Đóng góp bản vẽ" link button */
+.contribution-link {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contribution-link:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.contribution-link:active {
+    transform: scale(1);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.contributors-section {
+    margin: 20px;
+    padding: 10px; /* Reduced padding */
+    background-color: #ffffff; /* Clean white background */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Minimal shadow */
+}
+
+.contributors-section h2 {
+    font-size: 1.2rem; /* Smaller heading size */
+    margin-bottom: 5px; /* Reduced margin */
+    color: #007bff; /* Bold blue color */
+    text-align: left; /* Align to the left */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    letter-spacing: 0.5px; /* Slightly tighter letter spacing */
+}
+
+.contributors-list {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* No padding */
+    margin: 0; /* No margin */
+}
+
+.contributors-list li {
+    font-size: 0.9rem; /* Smaller font size for compactness */
+    color: #333; /* Standard text color */
+    margin: 3px 0; /* Vertical spacing between items */
+    padding: 5px 8px; /* Compact padding */
+    background-color: #f8f9fa; /* Light gray for list items */
+    border-radius: 3px; /* Slightly rounded corners */
+    transition: background-color 0.3s; /* Smooth background change */
+}
+
+.contributors-list li:hover {
+    background-color: #e0e0e0; /* Darker gray on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    background: linear-gradient(90deg, #FF6B6B, #556270, #4ECDC4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    position: relative;
+    animation: glow 1.5s ease-in-out infinite alternate;
+    padding: 20px;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #FF6B6B, 0 0 10px #FF6B6B, 0 0 20px #FF6B6B, 0 0 40px #FF6B6B;
+    }
+    100% {
+        text-shadow: 0 0 10px #4ECDC4, 0 0 20px #4ECDC4, 0 0 30px #4ECDC4, 0 0 40px #4ECDC4;
+    }
+}
+
+h2::before,
+h2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 2px;
+    background: #fff;
+    animation: line 1.5s infinite;
+}
+
+h2::before {
+    left: 0;
+    animation-delay: -0.75s;
+}
+
+h2::after {
+    right: 0;
+}
+
+@keyframes line {
+    0%, 100% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0.5);
+    }
+}
+
+
+.gallery-item.hidden {
+  display: none;
+}
+

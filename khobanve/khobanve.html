@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freedrawingstore.vn</title>
+    <link rel="icon" href="hinhanh/khobanve.png" type="image/png">
+    <link rel="stylesheet" href="khobanve.css">
+    <script src="khobanvetb.js"></script>
+
+
+</head>
+<body>
+    <header>
+        <h2>Freedrawingstore.vn</h2>
+        <select id="filterSelect">
+            <option value="all">Tất cả loại sản phẩm</option>
+            <option value="KT">Kiến Trúc</option>
+            <option value="KC">Kết Cấu</option>
+            <option value="QH">Quy Hoạch</option>
+            <option value="AU">AutoCad</option>
+            <option value="RV">Revit</option>
+            <option value="SK">SketChup</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Tìm kiếm bằng tên hoặc mã bản vẽ...">
+        
+        <!-- Link to contribute drawings -->
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeF8ry77AIcInAmfSYvPr8AaDhCZ1HKtgEoOLHoy7VhZyIgNg/viewform" target="_blank" class="contribution-link">Đóng góp bản vẽ</a></p>
+    </header>
+
+    <div class="container" id="product-container">
+    </div>
+
+    <!-- Personal contributions list section -->
+    <div class="contributors-section">
+        <h1 class="rainbow-text">Danh sách cá nhân đóng góp</h1>
+        <ul class="contributors-list">
+            <li>KS. Minh Khoa (Nhà Phát Triển Dự Án)</li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

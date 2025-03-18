@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Kết Data Máy Tính Minh Khoa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 400px;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 24px;
+            text-shadow: 0 0 5px cyan, 0 0 10px cyan;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 0 5px cyan;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            box-shadow: 0 0 10px cyan;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background: cyan;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: lime;
+            box-shadow: 0 0 10px lime;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title"></h1>
+        <p>Nhập mã để tải file</p>
+        <input type="text" id="codeInput" placeholder="Nhập mã số...">
+        <button onclick="checkCode()">Xác nhận</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkCode() {
+            var code = document.getElementById("codeInput").value;
+            var message = document.getElementById("message");
+            if (code === "DANM6565") {
+                message.innerHTML = "✅ Mã hợp lệ! Đang tải file...";
+                message.style.color = "lime";
+                setTimeout(() => {
+                    window.location.href = "https://drive.google.com/uc?export=download&id=1fp4DSmuMY6Psf13JmzfhJA8vtDaqHxzf";
+                }, 1000);
+            } else {
+                message.innerHTML = "❌ Mã không hợp lệ!";
+                message.style.color = "red";
+            }
+        }
+
+        // Hiệu ứng gõ chữ
+        const text = "Liên Kết Data Máy Tính Minh Khoa";
+        let index = 0;
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("title").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 100);
+            }
+        }
+        window.onload = typeEffect;
+    </script>
+</body>
+</html>

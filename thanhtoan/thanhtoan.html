@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <link rel="icon" href="iconbank.png" type="image/png">
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';">
+
+    <style>
+        /* Cài đặt cơ bản */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1f2a44; /* Nền màu xanh đậm */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Container cho nội dung chính */
+        .container {
+            background-color: #2a3b60; /* Nền màu xanh đậm */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1 {
+            color: #eaeaea; /* Màu chữ sáng */
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .payment-method {
+            margin-bottom: 25px;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 15px auto;
+            width: 100px;
+            height: auto;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #dfe6e9; /* Màu chữ sáng */
+            text-align: left;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #bdc3c7;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: border 0.3s, background-color 0.3s;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 24px 24px;
+        }
+
+        select:focus {
+            border-color: #3498db;
+            background-color: #ecf3fb;
+        }
+
+        .qr-code {
+            margin-top: 30px;
+            display: none;
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .qr-code img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .qr-code p {
+            font-size: 20px;
+            color: #27ae60;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Hiệu ứng xuất hiện */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .note {
+            font-size: 16px;
+            color: #e74c3c;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Chọn Phương Thức Thanh Toán</h1>
+        
+        <div class="payment-method">
+            <img id="bank-image" src="" alt="Bank Logo" style="display: none;">
+            <label for="payment-select">Phương Thức Thanh Toán:</label>
+            <select id="payment-select">
+                <option value="">Chọn...</option>
+                <option value="viettinbank" data-icon="fa-building">Ngân hàng TMCP Công Thương Việt Nam (ViettinBank)</option>
+                <option value="tpbank" data-icon="fa-building">Ngân hàng Thương mại Cổ phần Tiên Phong (TP Bank)</option>
+                <option value="momo" data-icon="fa-mobile-alt">Ví điện tử Momo</option>
+                <option value="zalopay" data-icon="fa-mobile-alt">Ví điện tử Zalo Pay</option>
+                <option value="viettelPay" data-icon="fa-mobile-alt">Ví điện tử Viettel Pay</option>
+                <option value="shopeepay" data-icon="fa-mobile-alt">Ví điện tử ShopeePay</option>
+            </select>
+        </div>
+        
+        <div class="qr-code" id="qr-code">
+            <img id="qr-image" src="" alt="QR Code">
+            <p id="account-number"></p>
+        </div>
+        
+        <div class="note" id="note"></div>
+    </div>
+
+    <script>
+        const paymentSelect = document.getElementById('payment-select');
+        const qrCode = document.getElementById('qr-code');
+        const qrImage = document.getElementById('qr-image');
+        const accountNumber = document.getElementById('account-number');
+        const bankImage = document.getElementById('bank-image');
+        const note = document.getElementById('note');
+        
+        paymentSelect.addEventListener('change', function() {
+            const selectedPayment = paymentSelect.value;
+
+            switch (selectedPayment) {
+                case 'viettinbank':
+                    bankImage.src = 'viettinbanklogo.png';  
+                    qrImage.src = 'viettinbankqr.png';
+                    accountNumber.textContent = 'Viettin Bank: 106873841893';
+                    break;
+                case 'tpbank':
+                    bankImage.src = 'tpbanklogo.png';  
+                    qrImage.src = 'tpbankqr.png';
+                    accountNumber.textContent = 'TP Bank: 0867544809';
+                    break;
+                case 'techombank':
+                    bankImage.src = 'techombanklogo.png';  
+                    qrImage.src = 'techombankqr.png';
+                    accountNumber.textContent = 'Techombank: 54220620029999';
+                    break;
+                    case 'momo':
+                    let isMomoOpened = false; // Biến flag để kiểm tra trạng thái
+
+                    case 'momo':
+    bankImage.src = 'momologo.png';  
+    qrImage.src = 'momoqr.png';
+    accountNumber.textContent = 'Momo: 0867544809';
+
+    // Mở trang Momo ngay lập tức trong tab mới
+    window.open('https://me.momo.vn/G9IPiNseFVCWfMfDipIO', '_blank');
+    break;
+
+
+
+                case 'zalopay':
+                    bankImage.src = 'zalopaylogo.png';  
+                    qrImage.src = 'zalopayqr.png';
+                    accountNumber.textContent = 'ZaloPay:0867544809';
+                    break;
+                case 'viettelPay':
+                    bankImage.src = 'viettelpaylogo.png';  
+                    qrImage.src = 'viettelpayqr.png';
+                    accountNumber.textContent = 'ViettelPay:0867544809';
+                    break;
+                case 'shopeepay':
+                    bankImage.src = 'shopeepaylogo.png';  
+                    qrImage.src = 'shopeepayqr.png';
+                    accountNumber.textContent = 'ShopeePay:0867544809';
+                    break;
+                default:
+                    qrCode.style.display = 'none';
+                    note.textContent = 'Vui lòng chọn phương thức thanh toán';
+                    return;
+            }
+
+            bankImage.style.display = 'block';
+            qrCode.style.display = 'block';
+            note.textContent = '';
+        });
+
+
+        document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+});
+
+        
+    </script>
+
+</body>
+</html>

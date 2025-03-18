@@ -1,0 +1,208 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  
+  /* Header Styles */
+  header {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  header h1 {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(243, 156, 18, 0.8), 0 0 20px rgba(230, 126, 34, 0.8);
+    padding: 10px 20px;
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  
+  header h1:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(243, 156, 18, 0.9), 0 20px 40px rgba(230, 126, 34, 0.8);
+    text-shadow: 0 0 15px #f39c12, 0 0 30px #e67e22;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Gallery Styles */
+  .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 50px 20px;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .gallery-item {
+    background: rgba(46, 204, 113, 0.1);
+    border: 2px solid rgba(46, 204, 113, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+    background: rgba(46, 204, 113, 0.3);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.3s ease;
+    border-bottom: 2px solid rgba(46, 204, 113, 0.3);
+  }
+  
+  .gallery-item img:hover {
+    transform: scale(1.1);
+    filter: brightness(0.85);
+  }
+  
+  .image-caption {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #1abc9c;
+    padding: 20px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Link styles */
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #f39c12;
+  }
+  
+  /* Button styles */
+  button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #16a085, #1abc9c);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2.8rem; /* Kích thước chữ lớn hơn một chút */
+      padding: 10px 20px;
+      text-shadow: 0 0 8px rgba(243, 156, 18, 0.8), 0 0 16px rgba(230, 126, 34, 0.7);
+    }
+  
+    .gallery-container {
+      gap: 25px; /* Tăng khoảng cách giữa các phần tử */
+      padding: 30px 15px; /* Cân đối padding */
+    }
+  
+    .gallery-item {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng chiều sâu */
+      border-radius: 12px; /* Làm mềm các góc */
+    }
+  
+    .gallery-item img {
+      height: 180px;
+      border-radius: 8px; /* Bo tròn nhẹ các góc hình ảnh */
+      transition: all 0.4s ease; /* Mềm mượt hơn khi hover */
+    }
+  
+    .gallery-item:hover img {
+      transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 2.3rem; /* Giảm kích thước nhưng vẫn nổi bật */
+      padding: 8px 15px;
+      text-shadow: 0 0 6px rgba(243, 156, 18, 0.7), 0 0 12px rgba(230, 126, 34, 0.6);
+    }
+  
+    .gallery-container {
+      padding: 20px 10px; /* Giữ khoảng cách hợp lý */
+      gap: 20px;
+    }
+  
+    .gallery-item {
+      border-radius: 10px; /* Bo góc vừa phải */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Nhẹ hơn để phù hợp với màn hình nhỏ */
+    }
+  
+    .gallery-item img {
+      height: 150px;
+      border-radius: 6px; /* Bo góc nhẹ hơn */
+    }
+  
+    .gallery-item:hover img {
+      transform: scale(1.08); /* Phóng to hơn so với bản tablet */
+      filter: brightness(0.95);
+    }
+  }
+  
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  hr {
+    border: none;
+    height: 10px;
+    background: linear-gradient(90deg, #eb0505, #98e446);
+    margin: 30px 0;
+    width: 80%; /* Điều chỉnh chiều dài của gạch ngang */
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 10; /* Độ mờ */
+  }
+  
