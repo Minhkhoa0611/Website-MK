@@ -212,3 +212,58 @@ footer p {
     color: #555;
 }
 
+/* Định dạng chung */
+.construction-process {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.construction-process .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.construction-process h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Định dạng các bước */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.step {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+}
+
+.step h3 {
+    font-size: 28px;
+    color: #007bff;
+    margin: 0 0 10px;
+}
+
+.step p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.step p strong {
+    color: #333;
+}
