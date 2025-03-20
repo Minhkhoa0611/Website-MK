@@ -347,32 +347,46 @@ if (gallery) {
     </head>
 
 
-   
-<footer class="site-footer">
-    <div class="footer-container">
-        <!-- Bản quyền -->
-
-
-        <!-- Thông tin liên hệ -->
-        <div class="contact-info">
-            <p><strong>Liên hệ chúng tôi:</strong></p>
-            <p>Email: <a href="mailto:mkcons.az@gmail.com" style="color:#f1c40f;">mkcons.az@gmail.com</a></p>
-            <p>Số điện thoại: 0867544809 & 0825864379</p>
-            <p>Địa chỉ: Ninh Bình - Ninh Hòa - Khánh Hòa</p>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Thông tin liên hệ -->
+            <div class="contact-info">
+                <p><strong>Liên hệ chúng tôi:</strong></p>
+                <p>Email: <a href="mailto:mkcons.az@gmail.com" style="color:#f1c40f;">mkcons.az@gmail.com</a></p>
+                <p>Số điện thoại: 0867544809 & 0825864379</p>
+                <p>Địa chỉ công ty: Ninh Bình, Ninh Hòa, Khánh Hòa, Việt Nam</p>
+                <p><strong>Vị trí của bạn:</strong> <span id="user-location">Đang xác định...</span></p>
+            </div>
+    
+            <!-- Bản quyền -->
+            <div class="footer-content">
+                <p>&copy; 2025 Xây Dựng Minh Khoa. All rights reserved.</p>
+            </div>
+    
+            <!-- Mạng xã hội -->
+            <div class="social-icons">
+                <p><strong>Kết nối với chúng tôi:</strong></p>
+                <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube fa-2x"></i></a>
+                <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok fa-2x"></i></a>
+            </div>
         </div>
-        <div class="footer-content">
-            <p>&copy; 2025 Xây Dựng Minh Khoa. All rights reserved.</p>
-        </div>
-        <!-- Mạng xã hội -->
-        <div class="social-icons">
-            <p><strong>Kết nối với chúng tôi:</strong></p>
-            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
-            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram fa-2x"></i></a>
-            <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube fa-2x"></i></a>
-            <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok fa-2x"></i></a>
-        </div>
-    </div>
-
+    </footer>
+    
+    <!-- JavaScript lấy vị trí người dùng -->
+    <script>
+        fetch("https://ipinfo.io/json?token=ffafdfeb7f37bf")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("user-location").innerText = 
+                    `${data.city}, ${data.region}, ${data.country}`;
+            })
+            .catch(() => {
+                document.getElementById("user-location").innerText = "Không thể lấy vị trí.";
+            });
+    </script>
+    
     <!-- Thiết kế bởi -->
     <div class="footer-bottom">
         <p>© Designed & Developed by <a href="Dev.html" target="_blank">DevServerPyML</a></p>
