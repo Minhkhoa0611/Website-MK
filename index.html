@@ -45,73 +45,98 @@
             </div>
         </div>
         
-        <div class="container image-gallery" id="gallery"></div>
-        <script>
-// Tìm phần tử div có class "container image-gallery" và id "gallery"
-const gallery = document.querySelector(".container.image-gallery#gallery");
+    <div class="container image-gallery" id="galleryNhadep"></div>
+    <hr style="border:none;height:4px;background:linear-gradient(to right, #00aaff, #0055ff, #00aaff);border-radius:2px;box-shadow:0 2px 6px rgba(0, 85, 255, 0.5);margin:30px 0;">
+    <div class="container image-gallery" id="galleryNVS"></div>
+    <hr style="border:none;height:4px;background:linear-gradient(to right, #00aaff, #0055ff, #00aaff);border-radius:2px;box-shadow:0 2px 6px rgba(0, 85, 255, 0.5);margin:30px 0;">
+    <div class="container image-gallery" id="galleryBep"></div>
+    <hr style="border:none;height:4px;background:linear-gradient(to right, #00aaff, #0055ff, #00aaff);border-radius:2px;box-shadow:0 2px 6px rgba(0, 85, 255, 0.5);margin:30px 0;">
+    <div class="container image-gallery" id="galleryPhongKhach"></div>
+    <hr style="border:none;height:4px;background:linear-gradient(to right, #00aaff, #0055ff, #00aaff);border-radius:2px;box-shadow:0 2px 6px rgba(0, 85, 255, 0.5);margin:30px 0;">
+    <div class="container image-gallery" id="galleryCongNha"></div>
+    <hr style="border:none;height:4px;background:linear-gradient(to right, #00aaff, #0055ff, #00aaff);border-radius:2px;box-shadow:0 2px 6px rgba(0, 85, 255, 0.5);margin:30px 0;">
 
-// Nếu gallery tồn tại thì thêm tiêu đề và hình ảnh
-if (gallery) {
-    // Tạo tiêu đề
-    const title = document.createElement("h2");
-    title.innerText = "CÁC MẪU NHÀ ĐẸP";
-    title.style.textAlign = "center";
-    title.style.fontSize = "32px";
-    title.style.fontWeight = "bold";
-    title.style.margin = "20px 0";
-    gallery.before(title);
+            <script>
+// Danh sách ảnh theo nhóm
+const galleries = {
+    "galleryNhadep": {
+        title: "Mẫu Nhà Hộp Đẹp Xinh 2025",
+        images: ["Mẫu 1.webp", "Mẫu 2.webp", "Mẫu 3.webp", "Mẫu 4.webp", "Mẫu 5.webp", "Mẫu 6.webp", "Mẫu 7.webp"]
+    },
+    
+    "galleryNVS": {
+        title: "Mẫu Thiết Kế NVS Hiện Đại 2025",
+        images: ["Mẫu NVS1.webp", "Mẫu NVS2.webp", "Mẫu NVS3.webp", "Mẫu NVS4.webp", "Mẫu NVS5.webp"]
+    },
+    "galleryBep": {
+        title: "Thiết Kế Phòng Bếp Sang Trọng 2025",
+        images: ["Phòng Bếp 1 (1).webp", "Phòng Bếp 1 (2).webp", "Phòng Bếp 1 (3).webp", "Phòng Bếp 1 (4).webp", "Phòng Bếp 1 (5).webp", "Phòng Bếp 1 (6).webp", "Phòng Bếp 1 (7).webp"]
+    },
+    "galleryPhongKhach": {
+        title: "Thiết Kế Mẫu Phòng Khách 2025",
+        images: ["Phòng Khách (1).webp", "Phòng Khách (2).webp", "Phòng Khách (3).webp", "Phòng Khách (4).webp", "Phòng Khách (5).webp", "Phòng Khách (6).webp"]
+    },
 
-    // Thiết lập CSS cho gallery
-    gallery.style.display = "grid";
-    gallery.style.gridTemplateColumns = "repeat(auto-fill, minmax(200px, 1fr))";
-    gallery.style.gap = "15px";
-    gallery.style.padding = "20px";
-    gallery.style.justifyContent = "center";
-
-    // Thư mục chứa ảnh
-    const folder = "DuanNP/";
-    let imageNames = [
-        "Mẫu 1.webp", "Mẫu 2.webp", "Mẫu 3.webp", "Mẫu 4.webp",
-        "Mẫu 5.webp", "Mẫu 6.webp", "Mẫu 7.webp", "Mẫu NVS1.webp", "Mẫu NVS2.webp",
-        "Mẫu NVS3.webp", "Mẫu NVS4.webp", "Mẫu NVS5.webp"
-    ];
-
-    // Xáo trộn mảng hình ảnh để hiển thị ngẫu nhiên
-    imageNames = imageNames.sort(() => Math.random() - 0.5);
-
-    // Duyệt qua danh sách ảnh và thêm vào gallery
-    imageNames.forEach(name => {
-        const img = document.createElement("img");
-        img.src = folder + name;
-        img.alt = "Gallery Image";
-        
-        // Thiết lập CSS
-        img.style.width = "100%";
-        img.style.maxWidth = "220px";
-        img.style.height = "auto";
-        img.style.borderRadius = "15px";
-        img.style.boxShadow = "4px 4px 15px rgba(0, 0, 0, 0.2)";
-        img.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-        img.style.cursor = "pointer";
-        img.style.objectFit = "cover";
-        img.style.display = "block";
-        img.style.margin = "auto";
-        
-        // Hiệu ứng hover
-        img.addEventListener("mouseover", () => {
-            img.style.transform = "scale(1.1)";
-            img.style.boxShadow = "6px 6px 20px rgba(0, 0, 0, 0.3)";
-        });
-        
-        img.addEventListener("mouseout", () => {
-            img.style.transform = "scale(1)";
-            img.style.boxShadow = "4px 4px 15px rgba(0, 0, 0, 0.2)";
-        });
-        
-        gallery.appendChild(img);
-    });
+    "galleryCongNha": {
+    "title": "Mẫu Cổng Nhà Đẹp 2025",
+    "images": ["Cổng Nhà (1).webp", "Cổng Nhà (2).webp", "Cổng Nhà (3).webp", "Cổng Nhà (4).webp", "Cổng Nhà (5).webp"]
 }
-        </script>
+
+};
+
+// Hàm tạo gallery tự động
+const createGallery = (containerId, titleText, images) => {
+    const gallery = document.getElementById(containerId);
+    if (!gallery) return;
+
+    const section = document.createElement("div");
+    section.style.width = "100%";
+    section.style.textAlign = "center";
+    section.style.marginBottom = "30px";
+
+    const sectionTitle = document.createElement("h2");
+    sectionTitle.innerText = titleText;
+    sectionTitle.style.fontSize = "28px";
+    sectionTitle.style.fontWeight = "bold";
+    sectionTitle.style.margin = "20px 0";
+    section.appendChild(sectionTitle);
+
+    const sectionGallery = document.createElement("div");
+    sectionGallery.style.display = "flex";
+    sectionGallery.style.flexWrap = "wrap"; // Hiển thị toàn bộ ảnh
+    sectionGallery.style.justifyContent = "center";
+    sectionGallery.style.gap = "15px";
+    sectionGallery.style.padding = "20px";
+
+    images.forEach(name => {
+        const img = document.createElement("img");
+        img.src = "DuanNP/" + name;
+        img.alt = name;
+        img.style.width = "auto";
+        img.style.maxWidth = "220px";
+        img.style.borderRadius = "10px";
+        img.style.objectFit = "cover";
+        img.style.cursor = "pointer";
+        img.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+
+        img.addEventListener("mouseover", () => img.style.transform = "scale(1.1)");
+        img.addEventListener("mouseout", () => img.style.transform = "scale(1)");
+
+        sectionGallery.appendChild(img);
+    });
+
+    section.appendChild(sectionGallery);
+    gallery.appendChild(section);
+};
+
+// Tự động tạo gallery cho tất cả phần tử trong danh sách
+Object.keys(galleries).forEach(id => {
+    createGallery(id, galleries[id].title, galleries[id].images);
+});
+
+
+
+            </script>
         
         <section class="features">
             <div class="container">
@@ -236,100 +261,131 @@ if (gallery) {
                 </form>
 
                 <!-- Cửa sổ xác nhận -->
-<div id="confirmPopup" class="popup">
-    <div class="popup-content">
-        <p>Khi nhấn "Xác nhận", bạn đồng ý chia sẻ thông tin của mình.</p>
-        <button onclick="sendForm()">Xác nhận</button>
-        <button onclick="closeConfirmPopup()">Hủy</button>
-    </div>
-</div>
-<style>
-    .popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    z-index: 1000;
-    text-align: center;
-}
+            <div id="confirmPopup" class="popup">
+                <div class="popup-content">
+                    <p>Khi nhấn "Xác nhận", bạn đồng ý chia sẻ thông tin của mình.</p>
+                    <button onclick="sendForm()">Xác nhận</button>
+                    <button onclick="closeConfirmPopup()">Hủy</button>
+                </div>
+            </div>
+            <style>
+                            progress {
+                width: 100%;
+                height: 12px;
+                border-radius: 10px;
+                background: rgba(0, 0, 0, 0.6);
+                border: 2px solid rgba(0, 255, 255, 0.8);
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+                overflow: hidden;
+                appearance: none;
+            }
 
-.popup-content {
-    font-size: 16px;
-}
+            progress::-webkit-progress-bar {
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 10px;
+            }
 
-.popup button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
+            progress::-webkit-progress-value {
+                background: linear-gradient(90deg, #00ffff, #0077ff);
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+                animation: progressAnimation 2s infinite alternate;
+            }
 
-.popup button:hover {
-    background: #0056b3;
-}
+            progress::-moz-progress-bar {
+                background: linear-gradient(90deg, #00ffff, #0077ff);
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            }
 
-.popup button:last-child {
-    background: #dc3545;
-}
+            @keyframes progressAnimation {
+                from {
+                    filter: brightness(1);
+                }
+                to {
+                    filter: brightness(1.5);
+                }
+            }
 
-.popup button:last-child:hover {
-    background: #c82333;
-}
+                    .popup {
+                        display: none;
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(135deg, #0a0f1e, #1b2a47);
+                        padding: 25px;
+                        box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+                        border: 2px solid rgba(0, 255, 255, 0.9);
+                        border-radius: 12px;
+                        z-index: 1000;
+                        text-align: center;
+                        width: 350px;
+                        font-family: "Orbitron", sans-serif;
+                        text-transform: uppercase;
+                        animation: neonGlow 1.5s infinite alternate;
+                    }
+                    .popup-content {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 15px;
+                        color: white; /* Chữ trắng */
+                        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Hiệu ứng phát sáng nhẹ */
+                    }
+
+                    .popup button {
+                        margin: 10px;
+                        padding: 12px 20px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        border: 2px solid rgba(0, 255, 255, 0.6);
+                        background: rgba(0, 0, 0, 0.6);
+                        color: white; /* Chữ trên nút cũng màu trắng */
+                        cursor: pointer;
+                        border-radius: 8px;
+                        transition: 0.3s ease-in-out;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+                    }
+
+                    .popup button:hover {
+                        background: rgba(0, 255, 255, 0.2);
+                        transform: scale(1.1);
+                        box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+                    }
+
+                    .popup button:last-child {
+                        border-color: rgba(255, 0, 0, 0.6);
+                        color: white; /* Chữ trên nút đỏ cũng màu trắng */
+                        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+                    }
+
+                    .popup button:last-child:hover {
+                        background: rgba(255, 0, 0, 0.2);
+                        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+                    }
+
+                    @keyframes neonGlow {
+                        from {
+                            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+                        }
+                        to {
+                            box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+                        }
+                    }
 
 </style>
-                <!-- Cửa sổ Popup -->
-<div id="popupMessage" class="popup">
-    <div class="popup-content">
-        <p>Thông tin đã được gửi thành công!</p>
-        <button onclick="closePopup()">Đóng</button>
-    </div>
-    <style>
-        .popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    z-index: 1000;
-    text-align: center;
-}
 
-.popup-content {
-    font-size: 16px;
-}
+        <div id="popupMessage" class="popup">
+        <div class="popup-content">
+            <p>Thông tin đã được gửi thành công!</p>
+            <button onclick="closePopup()">Đóng</button>
+        </div>
 
-.popup button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
-.popup button:hover {
-    background: #218838;
-}
-
-    </style>
-</div>
-
-            </div>
             
-        </section>
+</section>
                
         <section class="contact-info">
             <div class="container">
