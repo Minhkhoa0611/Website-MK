@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 document.addEventListener("DOMContentLoaded", function () {
     console.log("🚀 Đang tối ưu trang web...");
 
@@ -65,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-=======
 document.addEventListener("DOMContentLoaded", function () {
     console.log("🚀 Đang tối ưu trang web...");
 
@@ -132,4 +130,55 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
->>>>>>> Stashed changes
+
+(function () {
+    // Hàm để mã hóa chuỗi (có thể thay đổi thuật toán nếu cần)
+    function encryptText(text) {
+        return btoa(text).replace(/=/g, ""); // Base64 không có dấu '='
+    }
+
+    // Hàm tìm và mã hóa các API Key / Token trong mã nguồn
+    function maskSensitiveData() {
+        let elements = document.querySelectorAll("*"); // Lấy tất cả phần tử
+        elements.forEach(el => {
+            if (el.childNodes.length > 0) {
+                el.childNodes.forEach(node => {
+                    if (node.nodeType === 3) { // Nếu là text
+                        let text = node.nodeValue;
+                        let regex = /\b[A-Za-z0-9_-]{25,}\b/g; // Regex tìm API Key hoặc Token
+                        if (regex.test(text)) {
+                            node.nodeValue = text.replace(regex, match => encryptText(match)); // Mã hóa
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // Ngăn DevTools mở
+    function detectDevTools() {
+        let devtools = false;
+        const element = new Image();
+        Object.defineProperty(element, "id", {
+            get: function () {
+                devtools = true;
+                throw new Error("DevTools detected");
+            },
+        });
+
+        requestAnimationFrame(() => {
+            console.clear();
+            console.log(element);
+            if (devtools) {
+                alert("Phát hiện DevTools! Vui lòng đóng nó để tiếp tục.");
+                window.location.href = "about:blank";
+            }
+        });
+    }
+
+    // Gọi khi trang tải xong
+    window.onload = function () {
+        maskSensitiveData();
+        setInterval(detectDevTools, 1000);
+    };
+})();

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Cấp Phối Bê Tông</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tính Cấp Phối Bê Tông</h1>
+
+        <label for="mac">Chọn Mác Bê Tông:</label>
+        <select id="mac">
+            <option value="150">MAC 150 (B12.5)</option>
+            <option value="200">MAC 200 (B15)</option>
+            <option value="250">MAC 250 (B20)</option>
+            <option value="300">MAC 300 (B25)</option>
+            <option value="350">MAC 350 (B30)</option>
+            <option value="400">MAC 400 (B30)</option>
+            <option value="450">MAC 450 (B35)</option>
+            <option value="500">MAC 500 (B40)</option>
+            <option value="600">MAC 600 (B45)</option>
+        </select>
+
+        <label for="aggregate">Chọn Loại Đá:</label>
+        <select id="aggregate">
+            <option value="0.5x1">Đá 0.5x1 cm</option>
+            <option value="1x2">Đá 1x2 cm</option>
+            <option value="2x4">Đá 2x4 cm</option>
+            <option value="4x7">Đá 4x7 cm</option>
+        </select>
+
+        <label for="slump">Chọn Độ Sụt (cm):</label>
+        <select id="slump">
+            <option value="2-4">2-4</option>
+            <option value="6-8">6-8</option>
+            <option value="10-12">10-12</option>
+            <option value="14-17">14-17</option>
+        </select>
+
+        <label for="volume">Nhập Khối Lượng Bê Tông (m³):</label>
+        <input type="number" id="volume" placeholder="Nhập khối lượng bê tông" min="0" step="0.01">
+
+        <label for="calculateAdmixture">
+            <input type="checkbox" id="calculateAdmixture"> Tính Phụ Gia
+        </label>
+
+        <button onclick="calculate()">Tính Toán</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

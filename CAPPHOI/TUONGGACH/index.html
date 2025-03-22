@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall Construction Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Định Mức Cấp Phối Xây Tường Gạch</h1>
+        
+        <label for="brickType">Chọn loại gạch:</label>
+        <select id="brickType">
+            <option value="datnung">Gạch xây đất nung</option>
+            <option value="betong">Gạch xây bê tông</option>
+            <option value="aacBetongNhe">Xây gạch bê tông khí chưng áp AAC bằng vữa xây bê tông nhẹ</option>
+            <option value="aacThongThuong">Xây gạch bê tông khí chưng áp AAC bằng vữa xây thông thường</option>
+        </select>
+
+        <label for="brickSize">Chọn kích thước gạch:</label>
+        <select id="brickSize">
+            <option value="65x105x220">65x105x220mm</option>
+            <option value="50x100x200">50x100x200mm</option>
+            <option value="45x90x190">45x90x190mm</option>
+            <option value="40x80x190">40x80x190mm</option>
+            <option value="100x100x200">100x100x200mm</option>
+            <option value="80x80x190">80x80x190mm</option>
+            <option value="90x90x190">90x90x190mm</option>
+        </select>
+
+        <label for="mortarType">Chọn loại vữa:</label>
+        <select id="mortarType">
+            <option value="pcb40_50">Xi măng PCB40, cát vàng Mác 50</option>
+            <option value="pcb40_75">Xi măng PCB40, cát vàng Mác 75</option>
+            <option value="pcb40_100">Xi măng PCB40, cát vàng Mác 100</option>
+            <option value="pcb30_50">Xi măng PCB30, cát vàng Mác 50</option>
+            <option value="pcb30_75">Xi măng PCB30, cát vàng Mác 75</option>
+            <option value="pcb30_100">Xi măng PCB30, cát vàng Mác 100</option>
+        </select>
+
+        <label for="wallThickness">Tường dày:</label>
+        <select id="wallThickness">
+            <option value="105">105mm</option>
+            <option value="220">220mm</option>
+        </select>
+
+        <label for="wallVolume">Khối lượng tường:</label>
+        <select id="wallVolumeUnit">
+            <option value="m2">m²</option>
+            <option value="m3">m³</option>
+        </select>
+        <input type="number" id="wallVolume" placeholder="Nhập khối lượng tường">
+
+        <button id="calculateBtn">Tính toán</button>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
