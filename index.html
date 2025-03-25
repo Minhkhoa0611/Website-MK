@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <script src="Intro.js".js></script>
+    <!-- <script src="Intro.js".js></script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xây Dựng Minh Khoa</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="tuvan.css">
     <link rel="icon" href="Logo.png" type="image/png">
-    <script src="fl.js"></script>
+    <script src="fl.js"></script> 
     <script src="toiuu.js"></script>
 
 
@@ -56,14 +56,16 @@
                 <li><a href="index.html">Giới Thiệu</a></li>
                 <li><a href="dichvu.html">Dịch Vụ</a></li>
                 <li><a href="phanmem.html">Phần Mềm</a></li>
-                <li><a href="Baogiadichvu.html">Báo Giá</a></li>
-                <li><a href="thanhtoan/thanhtoan.html">Thanh Toán</a></li>
+                <li><a href="#baogia">Báo Giá</a></li>
+                <li><a href="#contact-form">Liên Hệ</a></li>
+
                 <li class="submenu">
                     <a href="#">Xem Thêm ▼</a>
                     <ul class="dropdown">
                         <li><a href="CAPPHOI/capphoi.html">Cấp Phối</a></li>
                         <li><a href="khobanve/khobanve.html">Kho Bản Vẽ (Free)</a></li>
                         <li><a href="lienhe.html">Liên Hệ</a></li>
+                        <li><a href="thanhtoan/thanhtoan.html">Thanh Toán</a></li>
                         <li><a href="quyenriengtu.html">Chính Sách</a></li>
                     </ul>
                 </li>
@@ -297,7 +299,7 @@ Object.keys(galleries).forEach(id => {
             </div>
         </section>
 
-        <div class="baogia">
+        <div id="baogia" class="baogia">
             <h1>BÁO GIÁ DỊCH VỤ CỦA XAYDUNGMINHKHOA</h1>
     
             <h2>📋 Dịch vụ Giám Sát</h2>
@@ -441,7 +443,7 @@ Object.keys(galleries).forEach(id => {
 
 </style>    
         
-        <section class="contact-form">
+<section id="contact-form" class="contact-form">
             <div class="container">
                 <h2>Tư vấn ngay</h2>
                 <form id="consultationForm">
