@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chuyển đổi đuôi file ảnh</title>
+  <link rel="stylesheet" href="chuyendoihinhanh.css">
+</head>
+<body>
+
+  <div id="conversionFrame">
+    <h2>Chuyển đổi đuôi file ảnh</h2>
+    <input type="file" id="fileInput" accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .tif, .raw, .webp, .svg, .heif, .heic, .ico, .jfif">
+    <br>
+    <select id="targetExtension">
+      <option value=".jpg">.jpg</option>
+      <option value=".jpeg">.jpeg</option>
+      <option value=".png">.png</option>
+      <option value=".gif">.gif</option>
+      <option value=".bmp">.bmp</option>
+      <option value=".tiff">.tiff</option>
+      <option value=".tif">.tif</option>
+      <option value=".raw">.raw</option>
+      <option value=".webp">.webp</option>
+      <option value=".svg">.svg</option>
+      <option value=".heif">.heif</option>
+      <option value=".heic">.heic</option>
+      <option value=".ico">.ico</option>
+      <option value=".jfif">.jfif</option>
+    </select>
+    <br>
+    <button onclick="convertImage()">Chuyển đổi</button>
+    <div id="loadingIndicator" class="progress-bar-container">
+      <div class="progress-bar"></div>
+    </div>
+    <a id="downloadLink" download>Tải xuống file mới</a>
+    <div id="successMessage"></div>
+  </div>
+
+  <script src="chuyendoihinhanh.js"></script>
+</body>
+<script src="https://www.xaydungminhkhoa.online/quaylai.js"></script>
+
+</html>

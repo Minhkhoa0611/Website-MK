@@ -1,0 +1,119 @@
+/* chuyendoihinhanh.css */
+
+/* Reset mặc định của trình duyệt */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Cài đặt nền và kiểu chữ chung cho trang */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+/* Khung chứa các phần tử của trang */
+#conversionFrame {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Tiêu đề của trang */
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Nút chọn file */
+input[type="file"] {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Dropdown chọn đuôi file ảnh */
+select {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #007bff;
+  font-size: 16px;
+}
+
+/* Nút chuyển đổi */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Hiển thị thanh tải */
+.progress-bar-container {
+  display: none; /* Ẩn thanh tải mặc định */
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 0;
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Liên kết tải xuống */
+#downloadLink {
+  display: none; /* Ẩn liên kết tải xuống mặc định */
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #28a745;
+  color: #ffffff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+#downloadLink:hover {
+  background-color: #218838;
+}
+
+/* Thông báo chuyển đổi thành công */
+#successMessage {
+  display: none;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  font-size: 16px;
+}
