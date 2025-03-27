@@ -7,20 +7,22 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5; /* Màu nền sáng để tạo cảm giác sạch sẽ */
-            color: #333; /* Màu chữ tối để dễ đọc */
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #3a3a5f); /* Nền gradient tối */
+            color: #fff; /* Màu chữ sáng */
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 30px;
             box-sizing: border-box;
+            min-height: 100vh;
         }
 
         h1 {
-            font-size: 24px;
-            color: #444; /* Màu chữ tiêu đề tối hơn để nổi bật */
-            margin-bottom: 20px;
+            font-size: 32px;
+            color: #f5f5f5;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Hiệu ứng bóng chữ */
         }
 
         #main-container {
@@ -29,7 +31,7 @@
             flex-wrap: wrap;
             align-items: flex-start;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             max-width: 1200px;
             width: 100%;
         }
@@ -39,10 +41,10 @@
             width: 300px;
             height: 300px;
             overflow: hidden;
-            border-radius: 10px; /* Bo góc khung ảnh để trông mềm mại hơn */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bóng khung ảnh nổi bật hơn */
-            background-color: #fff; /* Nền của khung ảnh */
-            border: 1px solid #ddd; /* Đường viền nhẹ cho khung ảnh */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #2c2c3e;
+            border: 2px solid #444;
         }
 
         #rounded-image {
@@ -56,57 +58,110 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            background: #fff; /* Nền của phần điều khiển */
-            padding: 20px;
-            border-radius: 10px; /* Bo góc phần điều khiển */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng cho phần điều khiển */
-            max-width: 400px; /* Kích thước tối đa của phần điều khiển */
+            gap: 20px;
+            background: #2c2c3e;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            max-width: 400px;
             width: 100%;
+        }
+
+        #slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
         }
 
         #slider {
             width: 100%;
-            max-width: 300px; /* Kích thước tối đa của slider */
+            max-width: 300px;
+            appearance: none;
+            height: 8px;
+            background: #444;
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        #slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #slider-value {
+            font-size: 14px;
+            color: #bbb;
         }
 
         button {
-            background-color: #4CAF50; /* Màu nền xanh lá cây cho nút bấm */
-            color: white; /* Màu chữ trắng */
+            background: linear-gradient(135deg, #4CAF50, #3e8e41);
+            color: white;
             border: none;
             padding: 12px 24px;
             margin: 5px;
-            border-radius: 5px; /* Bo góc nút bấm */
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển màu nền và bóng nút */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng nút bấm */
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 200px; /* Kích thước tối đa của nút bấm */
+            max-width: 200px;
         }
 
         button:hover {
-            background-color: #45a049; /* Màu nền khi di chuột qua nút */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Tăng độ bóng khi di chuột */
+            background: linear-gradient(135deg, #45a049, #367d39);
+            transform: translateY(-2px);
+        }
+
+        button.delete {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        button.delete:hover {
+            background: linear-gradient(135deg, #d62c1a, #a5281a);
         }
 
         .info-text {
             margin-bottom: 10px;
-            color: #666; /* Màu chữ nhạt hơn cho hướng dẫn */
+            color: #bbb;
             text-align: center;
+            font-size: 14px;
         }
 
         input[type="file"] {
             margin-bottom: 20px;
             width: 100%;
-            max-width: 300px; /* Kích thước tối đa của input file */
-        }
-
-        input[type="range"] {
-            margin: 10px 0;
+            max-width: 300px;
+            padding: 10px;
+            background: #444;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        /* Responsive design cho màn hình nhỏ */
+        input[type="file"]::-webkit-file-upload-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background: #45a049;
+        }
+
+        /* Responsive design */
         @media (max-width: 768px) {
             #main-container {
                 flex-direction: column;
@@ -115,13 +170,13 @@
             }
 
             #image-container {
-                width: 80%;
-                max-width: 300px; /* Đảm bảo khung ảnh không quá lớn trên màn hình nhỏ */
+                width: 90%;
+                max-width: 300px;
                 height: auto;
             }
 
             #controls {
-                width: 80%;
+                width: 90%;
             }
 
             button {
@@ -134,7 +189,7 @@
             }
 
             #slider {
-                max-width: 250px; /* Kích thước slider trên màn hình nhỏ */
+                max-width: 250px;
             }
         }
     </style>
@@ -148,14 +203,19 @@
         </div>
         <div id="controls">
             <input type="file" id="image-input" accept="image/*">
-            <div class="info-text">Chọn một bức ảnh từ máy tính của bạn</div>
-            <input type="range" id="slider" min="0" max="100" value="50">
-            <div class="info-text">Kéo thanh trượt để điều chỉnh bo góc ảnh</div>
-            <button onclick="downloadImage('png')">Tải ảnh về (PNG)</button>
-            <button onclick="downloadImage('jpg')">Tải ảnh về (JPG)</button>
-            <button onclick="downloadImage('ico')">Tải ảnh về (ICO)</button>
-            <button onclick="downloadImage('bmp')">Tải ảnh về (BMP)</button>
-            <button onclick="resetBorder()">Bỏ bo góc</button>
+            <div class="info-text">Upload an image from your device</div>
+            <div id="slider-container">
+                <input type="range" id="slider" min="0" max="100" value="50">
+                <span id="slider-value">50%</span>
+            </div>
+            <div class="info-text">Adjust the slider to round the image</div>
+            <button onclick="previewImage()">Preview</button>
+            <button onclick="downloadImage('png')">Download as PNG</button>
+            <button onclick="downloadImage('jpg')">Download as JPG</button>
+            <button onclick="downloadImage('ico')">Download as ICO</button>
+            <button onclick="downloadImage('bmp')">Download as BMP</button>
+            <button onclick="resetBorder()">Reset Border</button>
+            <button class="delete" onclick="deleteImage()">Delete Image</button>
         </div>
     </div>
 
@@ -163,6 +223,7 @@
         const imageInput = document.getElementById('image-input');
         const roundedImage = document.getElementById('rounded-image');
         const slider = document.getElementById('slider');
+        const sliderValue = document.getElementById('slider-value');
         const imageContainer = document.getElementById('image-container');
 
         imageInput.addEventListener('change', function() {
@@ -180,9 +241,30 @@
         slider.addEventListener('input', function() {
             const borderRadiusValue = this.value + '%';
             imageContainer.style.borderRadius = borderRadiusValue;
+            sliderValue.textContent = borderRadiusValue;
         });
 
+        function previewImage() {
+            if (!roundedImage.src) {
+                alert('Please upload an image first!');
+                return;
+            }
+            const previewWindow = window.open('', '_blank');
+            previewWindow.document.write(`
+                <html>
+                    <head><title>Image Preview</title></head>
+                    <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #1e1e2f;">
+                        <img src="${roundedImage.src}" style="border-radius: ${slider.value}%; max-width: 90%; max-height: 90%; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);">
+                    </body>
+                </html>
+            `);
+        }
+
         function downloadImage(format) {
+            if (!roundedImage.src) {
+                alert('Please upload an image first!');
+                return;
+            }
             html2canvas(imageContainer, { backgroundColor: null }).then(canvas => {
                 let dataURL;
                 switch (format) {
@@ -210,7 +292,15 @@
 
         function resetBorder() {
             imageContainer.style.borderRadius = '0%';
-            slider.value = 0; /* Đặt giá trị slider về 0 khi reset */
+            slider.value = 0;
+            sliderValue.textContent = '0%';
+        }
+
+        function deleteImage() {
+            roundedImage.src = '';
+            imageContainer.style.borderRadius = '0%';
+            slider.value = 50;
+            sliderValue.textContent = '50%';
         }
     </script>
     <script src="https://www.xaydungminhkhoa.online/quaylai.js"></script>
